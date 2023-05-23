@@ -1,0 +1,19 @@
+<header class="header">
+
+  <mat-toolbar color="primary">
+    <span>Kullanıcı Bilgileri</span>
+    <span class="example-spacer"></span>
+    <ul class="header-menu">
+      <li>
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Anasayfa</a>
+      </li>
+      <li>
+        <a routerLink="/about" routerLinkActive="active">Hakkında</a>
+      </li>
+      <li>
+        <a (click)="openUpdateuser()" class="bg-secondary p-3 rounded-2" routerLinkActive="active">Kullanıcı ekle</a>
+      </li>
+    </ul>
+  </mat-toolbar>
+
+</header>

@@ -1,0 +1,49 @@
+  <h3 class="alert alert-dark m-3 d-flex justify-content-center" role="alert">{{user ? 'kullanıcı düzenle' : 'Yeni Kullanıcı Ekle'}}</h3>
+  <mat-dialog-content class="mat-typography">
+  <form [formGroup]="userAddForm">
+    <div>
+      <mat-form-field class="d-flex justify-content-center" appearance="standard">
+        <mat-label>İsim</mat-label>
+        <input formControlName="name" matInput placeholder="ex. Mustafa" required>
+        <mat-error>İsim boş bırakılamaz</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="d-flex justify-content-center" appearance="standard">
+        <mat-label>Ünvan</mat-label>
+        <input formControlName="title" matInput placeholder="ex. Memur">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="d-flex justify-content-center" appearance="standard">
+        <mat-label>telefon numarası</mat-label>
+        <input type="tel" pattern="[0-9]{10}" formControlName="phone" matInput placeholder="ex.5461231212">
+        <mat-error>lütfen 10 haneli telefon numarası giriniz</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="d-flex justify-content-center" appearance="standard">
+        <mat-label>Website</mat-label>
+        <input formControlName="website" matInput placeholder="ex. deneme.com.tr">
+      </mat-form-field>
+    </div>
+
+    <div class="example-container">
+      <mat-form-field class="d-flex justify-content-center" appearance="fill">
+        <mat-label>email</mat-label>
+        <input type="email" formControlName="email" matInput placeholder="pat@example.com" [email]="true">
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <div class="flex-grow-1 text-start" *ngIf="user">
+      <button mat-button color="accent" (click)="deleteUser()">Sil</button>
+    </div>
+
+    <div>
+      <button mat-button color="warn" mat-dialog-close>Vazgeç</button>
+      <button  mat-raised-button color="primary" (click)="user ? updateUser(): add()" [disabled]="!userAddForm.valid" >{{ user ? 'Düzenle':'Ekle'}}</button>
+    </div>
+  </mat-dialog-actions>

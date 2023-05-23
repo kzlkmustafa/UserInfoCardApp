@@ -1,0 +1,14 @@
+<div class="alert alert-dark m-3" role="alert">
+  <h3 *ngIf="userService.users; else noUsers">{{title}}</h3>
+  <input class="form-control" id="userName" placeholder="arama" [(ngModel)]="filterText">
+  <small *ngIf="filterText" class="form-text text-muted">Şu an <strong>{{filterText}}</strong> aradınız</small>
+</div>
+
+<div class="row d-flex justify-content-center">
+
+  <ng-template #noUsers> <div class="alert alert-primary m-3" role="alert">Hiçbir kullanıcı bulunamadı.</div></ng-template>
+
+  <div *ngFor="let user of userService.users | userFilter:filterText" class="card text-bg-dark m-4" style="width: 18rem;">
+    <app-user-item [user] ="user"></app-user-item>
+  </div>
+</div>
